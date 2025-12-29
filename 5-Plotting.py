@@ -20,13 +20,13 @@ print(solution)
 # plt.title("Instancia VRP")
 # plt.tight_layout()
 
-# plot_result(res, m)  
-# plt.title("Rutas encontradas y evolución del algoritmo")
-# plt.tight_layout()
+plot_result(res, m)  
+plt.title("Rutas encontradas y evolución del algoritmo")
+plt.tight_layout()
 
 # plot_objectives(res)
 # for route in solution.routes():
 #     plot_route_schedule(m, route)
 
-
+plt.savefig("plot result")
 plt.show()

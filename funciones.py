@@ -58,6 +58,15 @@ def cargar_geojson(frm, to):
     else:
         return None
 # ---------------------------------------------------------------------------------------
+# --- Cargar archivos GeoJSON ---
+def cargar_geojson2(frm, to):
+    ruta = f"Medellín/GeoJSON/ruta_{frm}_{to}.geojson"
+    if os.path.exists(ruta):
+        with open(ruta, encoding="utf-8") as f:
+            return json.load(f)
+    else:
+        return None
+# ---------------------------------------------------------------------------------------
 # --- Quitar sufijos a los nombres de los clientes del ProblemData ---
 def clean_name(name: str):
     """

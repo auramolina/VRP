@@ -1,0 +1,174 @@
+{
+  "type": "FeatureCollection",
+  "bbox": [
+    -75.580594,
+    6.216274,
+    -75.579167,
+    6.220218
+  ],
+  "features": [
+    {
+      "bbox": [
+        -75.580594,
+        6.216274,
+        -75.579167,
+        6.220218
+      ],
+      "type": "Feature",
+      "properties": {
+        "extras": {
+          "roadaccessrestrictions": {
+            "values": [
+              [
+                0,
+                15,
+                0
+              ],
+              [
+                15,
+                16,
+                32
+              ],
+              [
+                16,
+                17,
+                0
+              ]
+            ],
+            "summary": [
+              {
+                "value": 0.0,
+                "distance": 567.8,
+                "amount": 97.53
+              },
+              {
+                "value": 32.0,
+                "distance": 14.4,
+                "amount": 2.47
+              }
+            ]
+          }
+        },
+        "warnings": [
+          {
+            "code": 1,
+            "message": "There may be restrictions on some roads"
+          }
+        ],
+        "way_points": [
+          0,
+          17
+        ],
+        "summary": {
+          "distance": 582.2,
+          "duration": 84.8
+        }
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            -75.579319,
+            6.216274
+          ],
+          [
+            -75.579167,
+            6.217235
+          ],
+          [
+            -75.580035,
+            6.217428
+          ],
+          [
+            -75.58037,
+            6.217505
+          ],
+          [
+            -75.580463,
+            6.217574
+          ],
+          [
+            -75.580534,
+            6.217665
+          ],
+          [
+            -75.580579,
+            6.217772
+          ],
+          [
+            -75.580594,
+            6.217886
+          ],
+          [
+            -75.580535,
+            6.218127
+          ],
+          [
+            -75.580491,
+            6.218306
+          ],
+          [
+            -75.580421,
+            6.218547
+          ],
+          [
+            -75.580366,
+            6.218813
+          ],
+          [
+            -75.580222,
+            6.219402
+          ],
+          [
+            -75.580151,
+            6.219693
+          ],
+          [
+            -75.580118,
+            6.219831
+          ],
+          [
+            -75.58006,
+            6.220068
+          ],
+          [
+            -75.579937,
+            6.220024
+          ],
+          [
+            -75.579887,
+            6.220218
+          ]
+        ],
+        "type": "LineString"
+      }
+    }
+  ],
+  "metadata": {
+    "attribution": "openrouteservice.org | OpenStreetMap contributors",
+    "service": "routing",
+    "timestamp": 1765570658244,
+    "query": {
+      "coordinates": [
+        [
+          -75.5794057,
+          6.2162872
+        ],
+        [
+          -75.579857,
+          6.22021
+        ]
+      ],
+      "profile": "driving-hgv",
+      "profileName": "driving-hgv",
+      "preference": "recommended",
+      "format": "geojson",
+      "language": "es"
+    },
+    "engine": {
+      "version": "9.5.0",
+      "build_date": "2025-10-31T12:33:09Z",
+      "graph_date": "2025-12-01T03:52:42Z",
+      "osm_date": "2025-11-24T00:59:59Z"
+    }
+  }
+}

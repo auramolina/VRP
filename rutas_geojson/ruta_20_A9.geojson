@@ -1,0 +1,71 @@
+{
+  "type": "FeatureCollection",
+  "bbox": [
+    -75.579319,
+    6.216274,
+    -75.579226,
+    6.216863
+  ],
+  "features": [
+    {
+      "bbox": [
+        -75.579319,
+        6.216274,
+        -75.579226,
+        6.216863
+      ],
+      "type": "Feature",
+      "properties": {
+        "way_points": [
+          0,
+          1
+        ],
+        "summary": {
+          "distance": 66.3,
+          "duration": 8.0
+        }
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            -75.579226,
+            6.216863
+          ],
+          [
+            -75.579319,
+            6.216274
+          ]
+        ],
+        "type": "LineString"
+      }
+    }
+  ],
+  "metadata": {
+    "attribution": "openrouteservice.org | OpenStreetMap contributors",
+    "service": "routing",
+    "timestamp": 1765570647664,
+    "query": {
+      "coordinates": [
+        [
+          -75.579387,
+          6.216888
+        ],
+        [
+          -75.5794057,
+          6.2162872
+        ]
+      ],
+      "profile": "driving-hgv",
+      "profileName": "driving-hgv",
+      "preference": "recommended",
+      "format": "geojson",
+      "language": "es"
+    },
+    "engine": {
+      "version": "9.5.0",
+      "build_date": "2025-10-31T12:33:09Z",
+      "graph_date": "2025-12-01T03:52:42Z",
+      "osm_date": "2025-11-24T00:59:59Z"
+    }
+  }
+}

@@ -157,7 +157,7 @@ for frm_node in list(locations.keys()):
 # Guardar instancia
 # Exportar en .pkl
 problem = m.data()
-with open("3.3-ProblemData.pkl", "wb") as f:
+with open("3.1-ProblemData.pkl", "wb") as f:
     pickle.dump(problem, f)
-with open("3.3-Modelo.pkl", "wb") as f:
+with open("3.2-Modelo.pkl", "wb") as f:
     pickle.dump(m, f)
