@@ -7,11 +7,11 @@ from funciones import cargar_geojson, clean_name, agrupar_eventos
 import re
 #--------------------------------------------
 # Modelo
-with open('3.3-Modelo.pkl', 'rb') as f:
+with open('3.2-Modelo.pkl', 'rb') as f:
     m = pickle.load(f)
 #--------------------------------------------
 # --- Resolver ---
-res = m.solve(MaxRuntime(240))
+res = m.solve(MaxRuntime(600))
 solution = res.best
 with open("4.1-Res.pkl", "wb") as f:
     pickle.dump(res, f)
@@ -181,4 +181,39 @@ mapa.get_root().html.add_child(Element(panel_html))
 folium.LayerControl(collapsed=False).add_to(mapa)
 mapa.save("4.2-Rutas.html")
 # #--------------------------------------------
+# ====== RUTAS RECTAS POR VEHÍCULO (SOLO CLIENTES) ======
+mapa = folium.Map(location=[6.1138, -75.3145], zoom_start=11)
+colores = [
+    "#e41a1c", "#377eb8", "#4daf4a",
+    "#984ea3", "#ff7f00", "#a65628"
+]
+id_to_name = {idx: loc.name for idx, loc in enumerate(m.locations)}
+for i, route in enumerate(solution.routes(), start=1):
+    color_ruta = colores[(i - 1) % len(colores)]
+    capa_ruta = folium.FeatureGroup(name=f"Vehículo {i}", show=True)
+    mapa.add_child(capa_ruta)
+    coords_clientes = [
+        (m.locations[v].y, m.locations[v].x)
+        for v in route.visits()
+    ]
+    folium.PolyLine(
+        locations=coords_clientes,
+        color=color_ruta,
+        weight=4,
+        opacity=0.85,
+        tooltip=f"Ruta vehículo {i}"
+    ).add_to(capa_ruta)
+    for orden, v in enumerate(route.visits(), start=1):
+        loc = m.locations[v]
+        nombre = id_to_name[v]
+        folium.CircleMarker(
+            location=[loc.y, loc.x],
+            radius=5,
+            color=color_ruta,
+            fill=True,
+            fill_opacity=1,
+            popup=f"{orden}. {nombre}"
+        ).add_to(capa_ruta)
+folium.LayerControl(collapsed=False).add_to(mapa)
+mapa.save("4.2-maparectas.html")
 

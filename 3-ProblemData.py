@@ -1,7 +1,7 @@
 import pandas as pd
 import pickle
 from pyvrp import Model
-from funciones import split_FF2S
+from funciones import *
 #--------------------------------------------
 coords = pd.read_csv("1.1-coordenadas.csv")
 dist = pd.read_csv("2.1-distancias.csv", header=None, index_col=False)
@@ -135,29 +135,50 @@ for _, row in coords.iterrows():
 # print(d)
 #--------------------------------------------  
 # ====== Edges ======
-names = coords["Nombre"].astype(str).tolist()
-dist.index = names
-dist.columns = names
-time.index = names
-time.columns = names
-# Establecer relación tiempo, distancia según los clientes agregados
-for frm_node in list(locations.keys()):
-    for to_node in list(locations.keys()):
+# names = coords["Nombre"].astype(str).tolist()
+# dist.index = names
+# dist.columns = names
+# time.index = names
+# time.columns = names
+# # Establecer relación tiempo, distancia según los clientes agregados
+# for frm_node in list(locations.keys()):
+#     for to_node in list(locations.keys()):
+#         frm_orig = original_of.get(frm_node, frm_node)
+#         to_orig = original_of.get(to_node, to_node)
+#         if frm_orig in dist.index and to_orig in dist.columns:
+#             # Agregar al modelo
+#             m.add_edge(
+#                 frm=locations[frm_node],
+#                 to=locations[to_node],
+#                 distance=int(dist.loc[frm_orig, to_orig]),
+#                 duration=int(time.loc[frm_orig, to_orig]),
+#             )
+
+# ====== Edges ======
+for frm_node in locations.keys():
+    for to_node in locations.keys():
         frm_orig = original_of.get(frm_node, frm_node)
         to_orig = original_of.get(to_node, to_node)
-        if frm_orig in dist.index and to_orig in dist.columns:
-            # Agregar al modelo
-            m.add_edge(
-                frm=locations[frm_node],
-                to=locations[to_node],
-                distance=int(dist.loc[frm_orig, to_orig]),
-                duration=int(time.loc[frm_orig, to_orig]),
-            )
+        if frm_orig == to_orig:
+            continue
+        frm_id = frm_orig.replace(" ", "_")
+        to_id = to_orig.replace(" ", "_")
+        dist_km, dur_min = matrices(frm_id, to_id)
+        if dist_km is None:
+            print(f"⚠️ Ruta faltante: {frm_orig} → {to_orig}")
+            continue
+        m.add_edge(
+            frm=locations[frm_node],
+            to=locations[to_node],
+            distance=int(dist_km),
+            duration=int(dur_min),
+        )
+print([e.duration for e in m._edges[:20]])
 #--------------------------------------------  
 # Guardar instancia
 # Exportar en .pkl
-problem = m.data()
-with open("3.1-ProblemData.pkl", "wb") as f:
-    pickle.dump(problem, f)
-with open("3.2-Modelo.pkl", "wb") as f:
-    pickle.dump(m, f)
+# problem = m.data()
+# with open("3.1.1-ProblemData.pkl", "wb") as f:
+#     pickle.dump(problem, f)
+# with open("3.2.1-Modelo.pkl", "wb") as f:
+#     pickle.dump(m, f)
