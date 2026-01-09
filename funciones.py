@@ -50,6 +50,11 @@ def make_avoid_multipolygon(coords, delta=0.001):
     }
 # ---------------------------------------------------------------------------------------
 # --- Cargar archivos GeoJSON ---
+    """
+    buscar los archivos .geojson que contiene la información de los arcos
+    en la carpeta "rutas_geojson" en caso de cambiar el nombre o la ubicación
+    de esta, reemplazar a continuación, y en 2-Distancias.py
+    """
 def cargar_geojson(frm, to):
     ruta = f"rutas_geojson/ruta_{frm}_{to}.geojson"
     if os.path.exists(ruta):
@@ -171,3 +176,4 @@ def agrupar_eventos(visitas_idx, m, original_of, SCALE):
         })
 
     return eventos
+
