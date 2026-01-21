@@ -11,7 +11,7 @@ with open('3.2-Modelo.pkl', 'rb') as f:
     m = pickle.load(f)
 #--------------------------------------------
 # --- Resolver ---
-res = m.solve(MaxRuntime(600))
+res = m.solve(MaxRuntime(300))
 solution = res.best
 with open("4.1-Res.pkl", "wb") as f:
     pickle.dump(res, f)

@@ -68,7 +68,7 @@ def matrices(frm, to):
     summary = geojson["features"][0]["properties"]["summary"]
     dist_km = summary["distance"] / 1000      # km
     dur_min = summary["duration"] / 60        # minutos
-    return dist_km*100, dur_min*100
+    return dist_km, dur_min
 # ---------------------------------------------------------------------------------------
 # --- Quitar sufijos a los nombres de los clientes del ProblemData ---
 def clean_name(name: str):
